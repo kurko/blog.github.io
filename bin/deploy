@@ -6,8 +6,8 @@ echo "> git merge master"
 git merge master
 echo "> bundle exec jekyll build"
 bundle exec jekyll build
-echo "> rsync -a _site/ ./"
-rsync -a _site/ ./
+echo "> rsync -a -I _site/ ./"
+rsync -a -I _site/ ./
 echo "> git add . -u"
 git add . -u
 echo "> git commit -m \"Deploy\""
