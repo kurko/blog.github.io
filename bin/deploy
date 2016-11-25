@@ -2,8 +2,8 @@
 
 echo "> git checkout gh-pages"
 git checkout gh-pages
-echo "> git merge master"
-git merge master
+echo "> git merge master --no-edit"
+git merge master --no-edit
 echo "> bundle exec jekyll build"
 bundle exec jekyll build
 echo "> rsync -a -I _site/ ./"
