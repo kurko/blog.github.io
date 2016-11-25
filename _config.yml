@@ -24,6 +24,7 @@ url: "http://alexsquest.com" # the base hostname & protocol for your site, e.g. 
 twitter_username: kurko
 github_username:  kurko
 
+exclude: ["bin"]
 sass:
   #style: compressed
 

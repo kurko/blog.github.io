@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+echo "> git checkout gh-pages"
+git checkout gh-pages
+echo "> git merge master"
+git merge master
+echo "> bundle exec jekyll build"
+bundle exec jekyll build
+echo "> rsync -a _site/ ./"
+rsync -a _site/ ./
+echo "> git commit -m \"Deploy\""
+git commit -m "Deploy"
+echo "> git push origin gh-pages"
+git push origin gh-pages
+echo "> git checkout master"
+git checkout master
+echo "Deployed to http://alexsquest.com"
