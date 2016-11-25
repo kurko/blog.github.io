@@ -1,0 +1,70 @@
+---
+---
+@import url('https://fonts.googleapis.com/css?family=Sumana')
+@import 'vendors/simplegrid.css'
+@import 'mixins.sass'
+
+body
+  font-family: "Sumana", serif
+  line-height: 1.8em
+
+header
+  @include page-width
+
+  a.back
+    background: url(/images/navigation-arrow-left-dark.png) no-repeat
+    background-position: 0 17px
+    padding-left: 12px
+
+  &.site-header
+    @include site-header
+
+    display: table
+    padding-bottom: 30px
+
+    &.for-articles
+      border-bottom: 1px solid #eee
+
+    h1
+      margin: 0
+      a
+        color: black
+        margin: 0
+        padding: 0
+    p
+      margin: 0
+
+a
+  @include no-underscore
+  color: #0c79a3
+
+section.articles
+  @include page-width
+
+  .date
+    margin-top: 1px
+    font-size: 1.6em
+    display: inline-block
+    text-align: right
+    padding-right: 4px !important
+    a
+      color: #ccc
+  h1
+    margin: 0
+  .excerpt
+    margin-top: 0
+    padding-top: 0
+    color: #666
+
+article
+  @include page-width
+  @include readable-article
+
+
+footer
+  @include page-width
+  margin-top: 50px
+  text-align: center
+
+  a
+    color: black !important

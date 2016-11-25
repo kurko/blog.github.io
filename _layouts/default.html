@@ -1,0 +1,62 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>{{ site.title }}</title>
+  <meta name="description" content="{{ site.description }}">
+  <meta name="author" content="{{ site.author }}">
+  <meta charset="utf-8">
+
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body class="layout-default">
+
+	<header class="site-header grid grid-pad">
+    <div class="col-1-12">
+      <div class="content">
+      </div>
+    </div>
+    <div class="col-10-12">
+      <div class="content">
+      <h1>
+        <a href="/">
+          Alex
+        </a>
+      </h1>
+      <p>Software articles</p>
+      </div>
+    </div>
+    <div class="col-1-12">
+      <div class="content">
+      </div>
+    </div>
+	</header>
+
+  <section class="articles">
+    {% for post in site.posts %}
+      <div class="grid">
+        <div class="col-4-12 date">
+          <a href="{{ post.url }}">
+            {{ post.date | date: '%B %Y' }}
+          </a>
+        </div>
+        <div class="col-8-12">
+          <h1>
+            <a href="{{ post.url }}">
+              {{ post.title }}
+            </a>
+          </h1>
+          <p class="excerpt">{{ post.excerpt }}</p>
+        </div>
+      </div>
+    {% endfor %}
+  </section>
+
+  <footer>
+    <a href="https://twitter.com/kurko">@kurko</a>
+  </footer>
+</body>
+</html>
