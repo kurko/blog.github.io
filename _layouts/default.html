@@ -59,6 +59,7 @@
     <a href="https://twitter.com/kurko">@kurko</a>
   </footer>
 
+  Env: {{ jekyll.environment }}
   {% if jekyll.environment == "production" %}
     {% include analytics.html %}
   {% endif %}
