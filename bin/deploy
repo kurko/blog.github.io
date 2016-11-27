@@ -4,8 +4,8 @@ echo "> git checkout gh-pages"
 git checkout gh-pages
 echo "> git merge master --no-edit"
 git merge master --no-edit
-echo "> bundle exec jekyll build"
-bundle exec jekyll build
+echo "> JEKYLL_ENV=production bundle exec jekyll build"
+JEKYLL_ENV=production bundle exec jekyll build
 echo "> rsync -a -I _site/ ./"
 rsync -a -I _site/ ./
 echo "> git add . -u"
