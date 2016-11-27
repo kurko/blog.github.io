@@ -1,11 +1,13 @@
 #!/usr/bin/env bash
 
+INTERMEDIARY_BRANCH=deploy-custom-html
+DEPLOY_BRANCH=gh-pages
 # Jekyll will not allow custom ENV variables like JEKYLL_ENV when in the
 # gh-pages branch, so I need to go to another branch, build it, then merge
 # it into gh-pages.
-echo "> git checkout deploy-custom-html"
-git checkout deploy-custom-html
-if [[ $? != 0 ]]; then echo "Cannot checkout deploy-custom-html"; exit 1; fi
+echo "> git checkout $(INTERMEDIARY_BRANCH)"
+git checkout $INTERMEDIARY_BRANCH 2>/dev/null || git checkout -b $INTERMEDIARY_BRANCH
+if [[ $? != 0 ]]; then echo "Cannot checkout $(INTERMEDIARY_BRANCH)"; exit 1; fi
 
 echo "> git merge master --no-edit"
 git merge master --no-edit
@@ -26,16 +28,16 @@ if [[ $? != 0 ]]; then echo "Cannot add files to stage."; exit $?; fi
 echo "> git commit -m \"Deploy\""
 git commit -m "Deploy"
 
-echo "> git checkout gh-pages"
-git checkout gh-pages
-if [[ $? != 0 ]]; then echo "Cannot checkout gh-pages"; exit 1; fi
+echo "> git checkout $(DEPLOY_BRANCH)"
+git checkout $DEPLOY_BRANCH
+if [[ $? != 0 ]]; then echo "Cannot checkout $(DEPLOY_BRANCH)"; exit 1; fi
 
-echo "> git merge deploy-custom-html --no-edit"
-git merge deploy-custom-html --no-edit
+echo "> git merge $(INTERMEDIARY_BRANCH) --no-edit"
+git merge $INTERMEDIARY_BRANCH --no-edit
 if [[ $? != 0 ]]; then echo "Cannot merge intermediary cleanly. Please fix conflicts and try again."; exit $?; fi
 
-echo "> git push origin gh-pages --force"
-git push origin gh-pages --force
+echo "> git push origin $(DEPLOY_BRANCH) --force"
+git push origin $DEPLOY_BRANCH --force
 if [[ $? != 0 ]]; then echo "Cannot push to Github."; exit $?; fi
 
 echo "> git checkout master"
