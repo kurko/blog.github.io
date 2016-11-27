@@ -22,7 +22,6 @@ if [[ $? != 0 ]]; then echo "Cannot add files to stage."; exit $?; fi
 
 echo "> git commit -m \"Deploy\""
 git commit -m "Deploy"
-if [[ $? != 0 ]]; then echo "Cannot commit."; exit $?; fi
 
 echo "> git push origin gh-pages --force"
 git push origin gh-pages --force
