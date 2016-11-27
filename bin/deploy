@@ -1,14 +1,16 @@
 #!/usr/bin/env bash
 
-INTERMEDIARY_BRANCH=deploy-custom-html
 DEPLOY_BRANCH=gh-pages
 # Jekyll will not allow custom ENV variables like JEKYLL_ENV when in the
 # gh-pages branch, so I need to go to another branch, build it, then merge
 # it into gh-pages.
-echo "> git checkout $INTERMEDIARY_BRANCH"
-git checkout $INTERMEDIARY_BRANCH 2>/dev/null || git checkout -b $INTERMEDIARY_BRANCH
-if [[ $? != 0 ]]; then echo "Cannot checkout $INTERMEDIARY_BRANCH"; exit 1; fi
 
+# echo "> git checkout $INTERMEDIARY_BRANCH"
+# git checkout $INTERMEDIARY_BRANCH 2>/dev/null || git checkout -b $INTERMEDIARY_BRANCH
+# if [[ $? != 0 ]]; then echo "Cannot checkout $INTERMEDIARY_BRANCH"; exit 1; fi
+
+echo "> rm -rf _site ./*.html"
+rm -rf _site ./*.html
 echo "> git merge master --no-edit"
 git merge master --no-edit
 if [[ $? != 0 ]]; then echo "Cannot merge cleanly. Please fix conflicts and try again."; exit $?; fi
