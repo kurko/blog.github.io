@@ -16,8 +16,8 @@ echo "> rsync -a -I _site/ ./"
 rsync -a -I _site/ ./
 if [[ $? != 0 ]]; then echo "Cannot rsync."; exit $?; fi
 
-echo "> git add . -u"
-git add . -u
+echo "> git add . && git add . -u"
+git add . && git add . -u
 if [[ $? != 0 ]]; then echo "Cannot add files to stage."; exit $?; fi
 
 echo "> git commit -m \"Deploy\""
