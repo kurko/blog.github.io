@@ -13,8 +13,8 @@ echo "> git checkout $DEPLOY_BRANCH"
 git checkout $DEPLOY_BRANCH
 if [[ $? != 0 ]]; then echo "Cannot checkout $DEPLOY_BRANCH"; exit 1; fi
 
-echo "> git merge master --no-edit"
-git merge master --no-edit
+echo "> git merge master -X theirs --no-edit"
+git merge master -X theirs --no-edit
 if [[ $? != 0 ]]; then echo "Cannot merge cleanly. Please fix conflicts and try again."; exit $?; fi
 
 echo "> rm -rf _site ./*.html"
