@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-echo "> git checkout gh-pages"
-git checkout gh-pages
+echo "> git checkout deploy-custom-html"
+git checkout deploy-custom-html
 if [[ $? != 0 ]]; then echo "Cannot checkout"; exit 1; fi
 
 echo "> git merge master --no-edit"
@@ -23,8 +23,8 @@ if [[ $? != 0 ]]; then echo "Cannot add files to stage."; exit $?; fi
 echo "> git commit -m \"Deploy\""
 git commit -m "Deploy"
 
-echo "> git push origin gh-pages --force"
-git push origin gh-pages --force
+echo "> git push origin deploy-custom-html --force"
+git push origin deploy-custom-html --force
 if [[ $? != 0 ]]; then echo "Cannot push to Github."; exit $?; fi
 
 echo "> git checkout master"
