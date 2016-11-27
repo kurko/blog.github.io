@@ -9,12 +9,16 @@ DEPLOY_BRANCH=gh-pages
 # git checkout $INTERMEDIARY_BRANCH 2>/dev/null || git checkout -b $INTERMEDIARY_BRANCH
 # if [[ $? != 0 ]]; then echo "Cannot checkout $INTERMEDIARY_BRANCH"; exit 1; fi
 
-echo "> rm -rf _site ./*.html"
-rm -rf _site ./*.html
+echo "> git checkout $DEPLOY_BRANCH"
+git checkout $DEPLOY_BRANCH
+if [[ $? != 0 ]]; then echo "Cannot checkout $DEPLOY_BRANCH"; exit 1; fi
+
 echo "> git merge master --no-edit"
 git merge master --no-edit
 if [[ $? != 0 ]]; then echo "Cannot merge cleanly. Please fix conflicts and try again."; exit $?; fi
 
+echo "> rm -rf _site ./*.html"
+rm -rf _site ./*.html
 echo "> JEKYLL_ENV=production bundle exec jekyll build"
 JEKYLL_ENV=production bundle exec jekyll build
 if [[ $? != 0 ]]; then echo "Cannot build."; exit $?; fi
@@ -29,14 +33,6 @@ if [[ $? != 0 ]]; then echo "Cannot add files to stage."; exit $?; fi
 
 echo "> git commit -m \"Deploy\""
 git commit -m "Deploy"
-
-echo "> git checkout $DEPLOY_BRANCH"
-git checkout $DEPLOY_BRANCH
-if [[ $? != 0 ]]; then echo "Cannot checkout $DEPLOY_BRANCH"; exit 1; fi
-
-echo "> git merge $INTERMEDIARY_BRANCH --no-edit"
-git merge $INTERMEDIARY_BRANCH --no-edit
-if [[ $? != 0 ]]; then echo "Cannot merge intermediary cleanly. Please fix conflicts and try again."; exit $?; fi
 
 echo "> git push origin $DEPLOY_BRANCH --force"
 git push origin $DEPLOY_BRANCH --force
