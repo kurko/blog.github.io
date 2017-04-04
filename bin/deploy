@@ -2,8 +2,8 @@
 
 echo "> git checkout gh-pages"
 git checkout gh-pages
-echo "> git merge master -X theirs " #--no-edit"
-git merge master -X theirs # --no-edit
+echo "> git merge master -X theirs --no-edit"
+git merge master -X theirs --no-edit
 echo "> bundle exec jekyll build"
 bundle exec jekyll build
 echo "> rm index.html"
