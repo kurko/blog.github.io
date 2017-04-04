@@ -3,7 +3,7 @@
 
 @mixin page-width
   width: 100%
-  max-width: 960px !important
+  max-width: 667px !important
   margin: 0 auto
 
 @mixin readable-article
@@ -38,3 +38,21 @@
 
 @mixin no-underscore
   text-decoration: none
+
+@mixin screen($media)
+  @if $media == retina
+    @media (-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 144dpi)
+      @content
+  @else if $media == non-retina
+    @media (-webkit-max-device-pixel-ratio: 1.49), (max-resolution: 143dpi)
+      @content
+  @else if $media == mobile
+    @media (max-width: 480px)
+      @content
+  @else if $media == tablet
+    @media (min-width: 481px) and (max-width: 959px)
+      @content
+  @else if $media == desktop
+    @media (min-width: 960px)
+      @content
+

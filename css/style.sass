@@ -1,70 +1,118 @@
 ---
 ---
-@import url('https://fonts.googleapis.com/css?family=Sumana')
+@import url('https://fonts.googleapis.com/css?family=Lato')
+//@import url('https://fonts.googleapis.com/css?family=Roboto')
 @import 'vendors/simplegrid.css'
+@import 'colors.sass'
 @import 'mixins.sass'
 
+.grid
+  min-width: initial
+
 body
-  font-family: "Sumana", serif
-  line-height: 1.8em
+  padding: 0
+  margin: 0
+  font-family: "Lato", "Roboto", "Helvetica", serif
+  //line-height: 1.8em
+  font-size: 87%
+
+p
+  line-height: 24px
+  margin-top: 1.7em
 
 header
-  @include page-width
-
-  a.back
-    background: url(/images/navigation-arrow-left-dark.png) no-repeat
-    background-position: 0 17px
-    padding-left: 12px
-
   &.site-header
     @include site-header
 
+    text-align: center
     display: table
-    padding-bottom: 30px
-
-    &.for-articles
-      border-bottom: 1px solid #eee
+    padding-top: 120px
+    padding-bottom: 100px
 
     h1
       margin: 0
-      a
-        color: black
-        margin: 0
-        padding: 0
-    p
-      margin: 0
+      font-weight: normal
+      +screen(mobile)
+        font-size: 2.0em
+      +screen(tablet)
+        font-size: 2.5em
+      +screen(desktop)
+        font-size: 3.3em
 
 a
   @include no-underscore
-  color: #0c79a3
+  color: $blue
+  &:visited
+    color: $blue !important
 
-section.articles
+nav.icons, body > section
   @include page-width
 
-  .date
-    margin-top: 1px
-    font-size: 1.6em
-    display: inline-block
-    text-align: right
-    padding-right: 4px !important
-    a
-      color: #ccc
-  h1
-    margin: 0
-  .excerpt
-    margin-top: 0
-    padding-top: 0
-    color: #666
+section.intro
+  +screen(tablet)
+    max-width: 500px !important
+  +screen(desktop)
+    max-width: 667px !important
 
-article
-  @include page-width
-  @include readable-article
-
-
-footer
-  @include page-width
-  margin-top: 50px
+nav.icons
   text-align: center
+  display: table
+  font-weight: bold
+  margin-top: 55px
+  +screen(mobile)
+    margin-top: 0
+  .content
+    margin: 10px 0
+    +screen(mobile)
+      margin-top: 15px
+  .icon
+    margin: 0px auto
+    width: 35px
+    height: 22px
+    display: table
+    background-size: contain
+    background-repeat: no-repeat
+    background-position: center
+  .blog
+    +screen(non-retina)
+      background-image: url('/images/icons/brain@1x.png')
+    +screen(retina)
+      background-image: url('/images/icons/brain@3x.png')
+  .projects
+    +screen(non-retina)
+      background-image: url('/images/icons/projects@1x.png')
+    +screen(retina)
+      background-image: url('/images/icons/projects@3x.png')
+  .cv
+    +screen(non-retina)
+      background-image: url('/images/icons/cv@1x.png')
+    +screen(retina)
+      background-image: url('/images/icons/cv@3x.png')
+  .github
+    +screen(non-retina)
+      background-image: url('/images/icons/github@1x.png')
+    +screen(retina)
+      background-image: url('/images/icons/github@3x.png')
+  .twitter
+    +screen(non-retina)
+      background-image: url('/images/icons/twitter@1x.png')
+    +screen(retina)
+      background-image: url('/images/icons/twitter@3x.png')
+  .contact
+    +screen(non-retina)
+      background-image: url('/images/icons/contact@1x.png')
+    +screen(retina)
+      background-image: url('/images/icons/contact@3x.png')
 
-  a
-    color: black !important
+section > .grid
+  padding: 10px
+
+section.picture
+  margin-top: 100px
+  +screen(mobile)
+    margin-top: 25px
+  img
+    border-radius: 4px
+    +screen(mobile)
+      border-radius: 0
+      margin-bottom: 15px
