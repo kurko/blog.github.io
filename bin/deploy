@@ -4,9 +4,10 @@ echo "> git checkout gh-pages"
 git checkout gh-pages
 echo "> git merge master -X theirs --no-edit"
 git merge master -X theirs --no-edit
-
-echo "> start bin/build"
-./bin/build
+echo "> bundle exec jekyll build"
+bundle exec jekyll build
+echo "> rm index.html"
+rm index.html
 
 echo "> rsync -a -I _site/ ./"
 rsync -a -I _site/ ./
