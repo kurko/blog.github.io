@@ -6,6 +6,8 @@ echo "> git merge master --no-edit"
 git merge master --no-edit
 echo "> bundle exec jekyll build"
 bundle exec jekyll build
+echo "> rm index.html"
+rm index.html
 echo "> rsync -a -I _site/ ./"
 rsync -a -I _site/ ./
 echo "> git add . -u"
