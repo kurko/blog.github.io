@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+FILES_TO_DELETE="index.html"
+echo "> rm -rf index.html"
+rm -rf index.html
+echo "> bundle exec jekyll build"
+bundle exec jekyll build
